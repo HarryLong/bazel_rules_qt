@@ -16,14 +16,7 @@ def qt_autoconf_impl(repository_ctx):
     is_linux_machine = False
     if os_name.find("windows") != -1:
         # Inside this folder, in Windows you can find include, lib and bin folder
-        default_qt_path = "C:\\LV_DEVELOPMENT\\External\\qt\\qt_5.15.2_msvc2019_64"
-        # If predefined path does not exist search for an alternative e.g. "C:\\\\Qt\\\\5.12.10\\\\msvc2017_64\\\\"
-        if not repository_ctx.path(default_qt_path).exists:
-            win_path_env = _get_env_var(repository_ctx, "PATH")
-            start_index = win_path_env.index("C:\\Qt\\5.")
-            end_index = win_path_env.index("msvc2017_64\\", start_index) + len("msvc2017_64")
-            default_qt_path = win_path_env[start_index:end_index+1]
-            default_qt_path = default_qt_path.replace('\\', "\\\\")
+        default_qt_path = "C:/LV_DEVELOPMENT/External/qt/qt_5.15.2_msvc2019_64"
     elif os_name.find("linux") != -1:
         is_linux_machine = True
 
